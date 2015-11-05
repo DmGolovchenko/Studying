@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Авторизация</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="../../scripts/angular-material/angular-material.min.css">
+
+    <script type="text/javascript" src="../../scripts/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../scripts/angular/angular-resource.min.js"></script>
+    <script type="text/javascript" src="../../scripts/angular/angular-route.min.js"></script>
+    <script type="text/javascript" src="../../scripts/angular/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../../scripts/angular/angular-aria.js"></script>
+    <script type="text/javascript" src="../../scripts/angular-local-storage/angular-local-storage.min.js"></script>
+    <script type="text/javascript" src="../../scripts/angular-material/angular-material.min.js"></script>
+
+    <script type="text/javascript" src="../services/authInterceptorService.js"></script>
+    <script type="text/javascript" src="../services/authService.js"></script>
+</head>
+<body>
+    <div>
+        <div ng-app="defaultModule">
+            <div ng-controller="signupController">
+                <h2 class="form-login-heading">Sign up</h2>
+                <input type="text" class="form-control" placeholder="Username" data-ng-model="registration.userName" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" data-ng-model="registration.password" required>
+                <input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.confirmPassword" required>
+                <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="signUp()">Submit</button>
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </div>
+
+            <div ng-controller="loginController">
+                <h2 class="form-login-heading">Login</h2>
+                <input type="text" class="form-control" placeholder="Username" data-ng-model="loginData.userName" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" data-ng-model="loginData.password" required>
+                <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="login()">Login</button>
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+
+                <div>
+                    <button class="btn btn-lg btn-info btn-block" type="Log out" data-ng-click="logout()">Log out</button>
+                </div>
+            </div>
+
+            <a href="app/views/authorization.html">На страницу авторизации</a>
+
+        </div>
+    </div>
+    <script type="text/ng-template" id="editVirtualMachineForm.tmpl.html">
+        <md-dialog aria-label="Virtual Machines">
+            <form>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Добавление</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="cancel()">
+                            <md-icon md-svg-src="../content/images/ic_close_24px.svg"
+                                     aria-label="Close dialog"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content style="max-width:800px;max-height:810px;min-width:300px;">
+
+                </md-dialog-content>
+                <div class="md-actions" layout="row">
+                    <md-button ng-click="cancel()">Отмена</md-button>
+                    <md-button ng-click="answer()" style="margin-right:20px;">Создать</md-button>
+                </div>
+            </form>
+        </md-dialog>
+    </script>
+</body>
+</html>

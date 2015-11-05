@@ -4,6 +4,7 @@ using Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using StudyingWebAPI.Providers;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup(typeof(StudyingWebAPI.Startup))]
 namespace StudyingWebAPI
@@ -17,6 +18,9 @@ namespace StudyingWebAPI
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+
+            var corsAttr = new EnableCorsAttribute("http://localhost:22833", "*", "*");
+            config.EnableCors(corsAttr);
         }
 
         public void ConfigureOAuth(IAppBuilder app)

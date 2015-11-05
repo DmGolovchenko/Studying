@@ -1,0 +1,62 @@
+﻿.penguin {
+    position: relative;
+}
+
+.penguin-body {
+    background: url("penguin/MyBody.png");
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+.penguin-left-hand {
+    background: url("penguin/MyLeftHand.png");
+    background-repeat: no-repeat;
+    height: 70px;
+    width: 40px;
+    background-size: 100%;
+    position: absolute;
+    transform: rotate(37deg);
+    transform-origin: right bottom;
+    left: 70px;
+    animation-name: example;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+.penguin-right-hand {
+    
+}
+.penguin-left-leg {
+    
+}
+.penguin-right-leg {
+    
+}
+
+@keyframes example {
+    0%   {transform: rotate(37deg);}
+    100% {transform: rotate(57deg);}
+}
+
+#earth {
+ background-image: url('planet-1-texture.png');
+  width: 70px;
+  height: 70px;
+  box-shadow: inset 5px 0 40px 3px rgba(0,0,0,0.9),
+    inset -3px 0 5px 2px rgba(255,255,255,0.16);
+  background-size: 190px;
+  margin: 80px auto;
+  border-radius: 50%;
+  position: relative;
+  animation-name: rotate;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+ 
+@keyframes rotate {
+  0% { background-position: 0px; }
+  100% { background-position: 190px; }
+}

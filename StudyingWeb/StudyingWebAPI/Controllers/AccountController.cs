@@ -1,23 +1,22 @@
 ﻿namespace StudyingWebAPI.Controllers
-{
-    using Microsoft.AspNet.Identity;
-    using Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading.Tasks;
+{       
     using System.Web.Http;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNet.Identity;
+
+    using Models;
+    using StudyingWebData;
 
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        private AuthRepository _repo = null;
+        private readonly StudyingEntities _repo;
 
         public AccountController()
         {
-            _repo = new AuthRepository();
+            _repo = new StudyingEntities();
+            _repo.Configuration.LazyLoadingEnabled = true;
         }
 
         // POST api/Account/Register
@@ -30,8 +29,7 @@
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await _repo.RegisterUser(userModel);
-
+            IdentityResult result = await new Authentication { }.RegisterUser(userModel);    
             IHttpActionResult errorResult = GetErrorResult(result);
 
             if (errorResult != null)
